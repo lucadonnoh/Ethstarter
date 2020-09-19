@@ -6,11 +6,11 @@ const web3 = new Web3(ganache.provider());
 const compiledFactory = require('../ethereum/build/CampaignFactory.json');
 const compiledCampaign = require('../ethereum/build/Campaign.json');
 
-const f_interface = JSON.parse(compiledFactory).abi;
-const f_bytecode = JSON.parse(compiledFactory).evm.bytecode.object;
+const f_interface = compiledFactory.abi;
+const f_bytecode = compiledFactory.evm.bytecode.object;
 
-const c_interface = JSON.parse(compiledCampaign).abi;
-const c_bytecode = JSON.parse(compiledCampaign).evm.bytecode.object;
+const c_interface = compiledCampaign.abi;
+const c_bytecode = compiledCampaign.evm.bytecode.object;
 
 
 let accounts;
@@ -33,4 +33,11 @@ beforeEach(async () => {
     const addresses = await factory.methods.getDeployedCampaigns().call();
     campaignAddress = addresses[0];
     campaign = await new web3.eth.Contract(c_interface, campaignAddress);
+});
+
+describe('Campaigns', () => {
+    it('deploys a factory and a campaign', () => {
+        assert.ok(factory.options.address);
+        assert.ok(campaign.options.address);
+    });
 })
