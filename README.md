@@ -7,3 +7,7 @@ Crowdfunding platform powered by Ethereum
 ```console
 foo@bar:~$ node compile.js
 ```
+### Running tests
+```console
+foo@bar:~$ npm run test
+```
