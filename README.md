@@ -11,3 +11,7 @@ foo@bar:~$ node compile.js
 ```console
 foo@bar:~$ npm run test
 ```
+### Run react app
+```console
+foo@bar:~$ npm run dev
+```
