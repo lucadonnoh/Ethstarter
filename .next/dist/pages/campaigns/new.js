@@ -72,7 +72,8 @@ var CampaignNew = function (_Component) {
 
         return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = CampaignNew.__proto__ || (0, _getPrototypeOf2.default)(CampaignNew)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             minimumContribution: '',
-            errorMessage: ''
+            errorMessage: '',
+            loading: false
         }, _this.onSubmit = function () {
             var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(event) {
                 var accounts;
@@ -81,33 +82,40 @@ var CampaignNew = function (_Component) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 event.preventDefault();
-                                _context.prev = 1;
-                                _context.next = 4;
+
+                                _this.setState({ loading: true, errorMessage: '' });
+
+                                _context.prev = 2;
+                                _context.next = 5;
                                 return _web2.default.eth.getAccounts();
 
-                            case 4:
+                            case 5:
                                 accounts = _context.sent;
-                                _context.next = 7;
+                                _context.next = 8;
                                 return _factory2.default.methods.createCampaign(_this.state.minimumContribution).send({
                                     from: accounts[0]
                                 });
 
-                            case 7:
-                                _context.next = 12;
+                            case 8:
+                                _context.next = 13;
                                 break;
 
-                            case 9:
-                                _context.prev = 9;
-                                _context.t0 = _context['catch'](1);
+                            case 10:
+                                _context.prev = 10;
+                                _context.t0 = _context['catch'](2);
 
                                 _this.setState({ errorMessage: _context.t0.message });
 
-                            case 12:
+                            case 13:
+
+                                _this.setState({ loading: false });
+
+                            case 14:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this2, [[1, 9]]);
+                }, _callee, _this2, [[2, 10]]);
             }));
 
             return function (_x) {
@@ -124,26 +132,26 @@ var CampaignNew = function (_Component) {
             return _react2.default.createElement(_Layout2.default, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 29
+                    lineNumber: 35
                 }
             }, _react2.default.createElement('h3', {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 30
+                    lineNumber: 36
                 }
             }, 'Create a Campaign'), _react2.default.createElement(_semanticUiReact.Form, { onSubmit: this.onSubmit, error: !!this.state.errorMessage, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 32
+                    lineNumber: 38
                 }
             }, _react2.default.createElement(_semanticUiReact.Form.Field, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 33
+                    lineNumber: 39
                 }
             }, _react2.default.createElement('label', {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 34
+                    lineNumber: 40
                 }
             }, 'Minimum contribution'), _react2.default.createElement(_semanticUiReact.Input, {
                 label: 'wei',
@@ -154,15 +162,15 @@ var CampaignNew = function (_Component) {
                 },
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 35
+                    lineNumber: 41
                 }
             })), _react2.default.createElement(_semanticUiReact.Message, { error: true, header: 'Oops!', content: this.state.errorMessage, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 42
+                    lineNumber: 48
                 }
-            }), _react2.default.createElement(_semanticUiReact.Button, { primary: true, __source: {
+            }), _react2.default.createElement(_semanticUiReact.Button, { primary: true, loading: this.state.loading, disabled: this.state.loading, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 43
+                    lineNumber: 49
                 }
             }, 'Create!')));
         }
@@ -172,4 +180,4 @@ var CampaignNew = function (_Component) {
 }(_react.Component);
 
 exports.default = CampaignNew;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzXFxjYW1wYWlnbnNcXG5ldy5qcyJdLCJuYW1lcyI6WyJSZWFjdCIsIkNvbXBvbmVudCIsIkZvcm0iLCJCdXR0b24iLCJJbnB1dCIsIk1lc3NhZ2UiLCJMYXlvdXQiLCJmYWN0b3J5Iiwid2ViMyIsIkNhbXBhaWduTmV3Iiwic3RhdGUiLCJtaW5pbXVtQ29udHJpYnV0aW9uIiwiZXJyb3JNZXNzYWdlIiwib25TdWJtaXQiLCJldmVudCIsInByZXZlbnREZWZhdWx0IiwiZXRoIiwiZ2V0QWNjb3VudHMiLCJhY2NvdW50cyIsIm1ldGhvZHMiLCJjcmVhdGVDYW1wYWlnbiIsInNlbmQiLCJmcm9tIiwic2V0U3RhdGUiLCJtZXNzYWdlIiwidGFyZ2V0IiwidmFsdWUiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxBQUFPLEFBQVM7Ozs7QUFDaEIsQUFBUyxBQUFNLEFBQVEsQUFBTzs7QUFDOUIsQUFBTyxBQUFZOzs7O0FBQ25CLEFBQU8sQUFBYTs7OztBQUNwQixBQUFPLEFBQVU7Ozs7Ozs7OztJLEFBQ1g7Ozs7Ozs7Ozs7Ozs7OzswTixBQUNGO2lDQUFRLEFBQ2lCLEFBQ3JCOzBCLEFBRkksQUFFVTtBQUZWLEFBQ0osaUIsQUFJSjtpR0FBVyxpQkFBQSxBQUFPLE9BQVA7b0JBQUE7OEVBQUE7OEJBQUE7eURBQUE7aUNBQ1A7c0NBRE8sQUFDUCxBQUFNO2dEQURDO2dEQUFBO3VDQUdvQixjQUFBLEFBQUssSUFIekIsQUFHb0IsQUFBUzs7aUNBQTFCO0FBSEgsb0RBQUE7Z0RBQUE7eURBSUcsQUFBUSxRQUFSLEFBQ0QsZUFBZSxNQUFBLEFBQUssTUFEbkIsQUFDeUIscUJBRHpCLEFBRUQ7MENBQ1MsU0FQWCxBQUlHLEFBRUksQUFDSSxBQUFTO0FBRGIsQUFDRixpQ0FIRjs7aUNBSkg7Z0RBQUE7QUFBQTs7aUNBQUE7Z0RBQUE7Z0VBVUg7O3NDQUFBLEFBQUssU0FBUyxFQUFFLGNBQWMsWUFWM0IsQUFVSCxBQUFjLEFBQXNCOztpQ0FWakM7aUNBQUE7Z0RBQUE7O0FBQUE7eUNBQUE7QTs7Ozs7Ozs7OztpQ0FlRjt5QkFDTDs7bUNBQ0ksQUFBQzs7OEJBQUQ7Z0NBQUEsQUFDSTtBQURKO0FBQUEsYUFBQSxrQkFDSSxjQUFBOzs4QkFBQTtnQ0FBQTtBQUFBO0FBQUEsZUFESixBQUNJLEFBRUEsc0NBQUEsQUFBQyx1Q0FBSyxVQUFVLEtBQWhCLEFBQXFCLFVBQVUsT0FBTyxDQUFDLENBQUMsS0FBQSxBQUFLLE1BQTdDLEFBQW1EOzhCQUFuRDtnQ0FBQSxBQUNJO0FBREo7K0JBQ0ssY0FBRCxzQkFBQSxBQUFNOzs4QkFBTjtnQ0FBQSxBQUNJO0FBREo7QUFBQSwrQkFDSSxjQUFBOzs4QkFBQTtnQ0FBQTtBQUFBO0FBQUEsZUFESixBQUNJLEFBQ0EseUNBQUEsQUFBQzt1QkFBRCxBQUNVLEFBQ047K0JBRkosQUFFa0IsQUFDZDt1QkFBTyxLQUFBLEFBQUssTUFIaEIsQUFHc0IsQUFDbEI7MEJBQVUseUJBQUE7MkJBQVMsT0FBQSxBQUFLLFNBQVMsRUFBRSxxQkFBcUIsTUFBQSxBQUFNLE9BQXBELEFBQVMsQUFBYyxBQUFvQztBQUp6RTs7OEJBQUE7Z0NBSFIsQUFDSSxBQUVJLEFBT0o7QUFQSTtBQUNJLGlDQU1SLEFBQUMsMENBQVEsT0FBVCxNQUFlLFFBQWYsQUFBc0IsU0FBUSxTQUFTLEtBQUEsQUFBSyxNQUE1QyxBQUFrRDs4QkFBbEQ7Z0NBVkosQUFVSSxBQUNBO0FBREE7Z0NBQ0EsQUFBQyx5Q0FBTyxTQUFSOzhCQUFBO2dDQUFBO0FBQUE7ZUFmWixBQUNJLEFBR0ksQUFXSSxBQUlmOzs7OztBLEFBekNxQixBQTRDMUI7O2tCQUFBLEFBQWUiLCJmaWxlIjoibmV3LmpzP2VudHJ5Iiwic291cmNlUm9vdCI6IkM6L1VzZXJzL2Rvbm5vL0RvY3VtZW50cy9HaXRIdWIvRXRoc3RhcnRlciJ9
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzXFxjYW1wYWlnbnNcXG5ldy5qcyJdLCJuYW1lcyI6WyJSZWFjdCIsIkNvbXBvbmVudCIsIkZvcm0iLCJCdXR0b24iLCJJbnB1dCIsIk1lc3NhZ2UiLCJMYXlvdXQiLCJmYWN0b3J5Iiwid2ViMyIsIkNhbXBhaWduTmV3Iiwic3RhdGUiLCJtaW5pbXVtQ29udHJpYnV0aW9uIiwiZXJyb3JNZXNzYWdlIiwibG9hZGluZyIsIm9uU3VibWl0IiwiZXZlbnQiLCJwcmV2ZW50RGVmYXVsdCIsInNldFN0YXRlIiwiZXRoIiwiZ2V0QWNjb3VudHMiLCJhY2NvdW50cyIsIm1ldGhvZHMiLCJjcmVhdGVDYW1wYWlnbiIsInNlbmQiLCJmcm9tIiwibWVzc2FnZSIsInRhcmdldCIsInZhbHVlIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsQUFBTyxBQUFTOzs7O0FBQ2hCLEFBQVMsQUFBTSxBQUFRLEFBQU87O0FBQzlCLEFBQU8sQUFBWTs7OztBQUNuQixBQUFPLEFBQWE7Ozs7QUFDcEIsQUFBTyxBQUFVOzs7Ozs7Ozs7SSxBQUNYOzs7Ozs7Ozs7Ozs7Ozs7ME4sQUFDRjtpQ0FBUSxBQUNpQixBQUNyQjswQkFGSSxBQUVVLEFBQ2Q7cUIsQUFISSxBQUdLO0FBSEwsQUFDSixpQixBQUtKO2lHQUFXLGlCQUFBLEFBQU8sT0FBUDtvQkFBQTs4RUFBQTs4QkFBQTt5REFBQTtpQ0FDUDtzQ0FBQSxBQUFNLEFBRU47O3NDQUFBLEFBQUssU0FBUyxFQUFDLFNBQUQsQUFBVSxNQUFNLGNBSHZCLEFBR1AsQUFBYyxBQUE2Qjs7Z0RBSHBDO2dEQUFBO3VDQU1vQixjQUFBLEFBQUssSUFOekIsQUFNb0IsQUFBUzs7aUNBQTFCO0FBTkgsb0RBQUE7Z0RBQUE7eURBT0csQUFBUSxRQUFSLEFBQ0QsZUFBZSxNQUFBLEFBQUssTUFEbkIsQUFDeUIscUJBRHpCLEFBRUQ7MENBQ1MsU0FWWCxBQU9HLEFBRUksQUFDSSxBQUFTO0FBRGIsQUFDRixpQ0FIRjs7aUNBUEg7Z0RBQUE7QUFBQTs7aUNBQUE7Z0RBQUE7Z0VBYUg7O3NDQUFBLEFBQUssU0FBUyxFQUFFLGNBQWMsWUFiM0IsQUFhSCxBQUFjLEFBQXNCOztpQ0FHeEM7O3NDQUFBLEFBQUssU0FBUyxFQUFDLFNBaEJSLEFBZ0JQLEFBQWMsQUFBUzs7aUNBaEJoQjtpQ0FBQTtnREFBQTs7QUFBQTt5Q0FBQTtBOzs7Ozs7Ozs7O2lDQW9CRjt5QkFDTDs7bUNBQ0ksQUFBQzs7OEJBQUQ7Z0NBQUEsQUFDSTtBQURKO0FBQUEsYUFBQSxrQkFDSSxjQUFBOzs4QkFBQTtnQ0FBQTtBQUFBO0FBQUEsZUFESixBQUNJLEFBRUEsc0NBQUEsQUFBQyx1Q0FBSyxVQUFVLEtBQWhCLEFBQXFCLFVBQVUsT0FBTyxDQUFDLENBQUMsS0FBQSxBQUFLLE1BQTdDLEFBQW1EOzhCQUFuRDtnQ0FBQSxBQUNJO0FBREo7K0JBQ0ssY0FBRCxzQkFBQSxBQUFNOzs4QkFBTjtnQ0FBQSxBQUNJO0FBREo7QUFBQSwrQkFDSSxjQUFBOzs4QkFBQTtnQ0FBQTtBQUFBO0FBQUEsZUFESixBQUNJLEFBQ0EseUNBQUEsQUFBQzt1QkFBRCxBQUNVLEFBQ047K0JBRkosQUFFa0IsQUFDZDt1QkFBTyxLQUFBLEFBQUssTUFIaEIsQUFHc0IsQUFDbEI7MEJBQVUseUJBQUE7MkJBQVMsT0FBQSxBQUFLLFNBQVMsRUFBRSxxQkFBcUIsTUFBQSxBQUFNLE9BQXBELEFBQVMsQUFBYyxBQUFvQztBQUp6RTs7OEJBQUE7Z0NBSFIsQUFDSSxBQUVJLEFBT0o7QUFQSTtBQUNJLGlDQU1SLEFBQUMsMENBQVEsT0FBVCxNQUFlLFFBQWYsQUFBc0IsU0FBUSxTQUFTLEtBQUEsQUFBSyxNQUE1QyxBQUFrRDs4QkFBbEQ7Z0NBVkosQUFVSSxBQUNBO0FBREE7Z0NBQ0EsQUFBQyx5Q0FBTyxTQUFSLE1BQWdCLFNBQVMsS0FBQSxBQUFLLE1BQTlCLEFBQW9DLFNBQVMsVUFBVSxLQUFBLEFBQUssTUFBNUQsQUFBa0U7OEJBQWxFO2dDQUFBO0FBQUE7ZUFmWixBQUNJLEFBR0ksQUFXSSxBQUlmOzs7OztBLEFBL0NxQixBQWtEMUI7O2tCQUFBLEFBQWUiLCJmaWxlIjoibmV3LmpzP2VudHJ5Iiwic291cmNlUm9vdCI6IkM6L1VzZXJzL2Rvbm5vL0RvY3VtZW50cy9HaXRIdWIvRXRoc3RhcnRlciJ9
